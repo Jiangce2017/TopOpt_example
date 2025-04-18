@@ -7,10 +7,15 @@ from skimage import measure
 
 
 ### load structure data using np.loadtxt
-op_str = # complete the code here
-
+op_str = np.loadtxt("./results/optimized_structure.txt")
 ### preprocessing the data
+# Check if the data is 1D and reshape it to 2D if necessary
+# You can specify the dimensions here according to your problem's requirements
+nelx = 90  # Number of elements along the x-axis
+nely = 30  # Number of elements along the y-axis
 
+if op_str.ndim == 1:
+    op_str = op_str.reshape((nely, nelx))  # Reshape the 1D array to 2D
 ## 1. write down the purpose of the following sippet in your report
 th = 0.5 # set the density threshold
 op_str[0,op_str[0,:]>th]=th

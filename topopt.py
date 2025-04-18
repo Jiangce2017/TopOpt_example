@@ -120,8 +120,7 @@ def main(nelx,nely,volfrac,penal,rmin,ft):
 	# save the optimized structured
 	op_structure = xPhys.reshape((nelx,nely)).T
 	# save op_structure to a file under results folder using np.savetxt
-# Save the optimized structure to a file under the "results" folder
-	np.savetxt("./results/op_structure.txt", op_structure, fmt="%0.6f")
+	np.savetxt("./results/optimized_structure.txt", xPhys)
 
 	#raw_input("Press any key...")
 #element stiffness matrix
