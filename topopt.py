@@ -79,7 +79,7 @@ def main(nelx,nely,volfrac,penal,rmin,ft):
 	dv = np.ones(nely*nelx)
 	dc = np.ones(nely*nelx)
 	ce = np.ones(nely*nelx)
-	while change>0.01 and loop<200:
+	while change>0.01 and loop<2000:
 		loop=loop+1
 		# Setup and solve FE problem
 		sK=((KE.flatten()[np.newaxis]).T*(Emin+(xPhys)**penal*(Emax-Emin))).flatten(order='F')
@@ -117,9 +117,7 @@ def main(nelx,nely,volfrac,penal,rmin,ft):
 	# Make sure the plot stays and that the shell remains	
 	plt.show()
 	plt.savefig("./results/final_structure.jpg")
-	# save the optimized structured
-	op_structure = xPhys.reshape((nelx,nely)).T
-	# save op_structure to a file under results folder using np.savetxt
+	np.save("density.npy", xPhys)
 
 	#raw_input("Press any key...")
 #element stiffness matrix
@@ -155,8 +153,8 @@ def oc(nelx,nely,x,volfrac,dc,dv,g):
 # The real main driver    
 if __name__ == "__main__":
 	# Default input parameters
-	nelx=90
-	nely=30
+	nelx=180
+	nely=60
 	volfrac=0.4
 	rmin=5.4
 	penal=3.0
